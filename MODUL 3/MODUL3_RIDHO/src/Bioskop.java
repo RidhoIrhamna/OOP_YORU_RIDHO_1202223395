@@ -1,37 +1,34 @@
 public class Bioskop {
-    
-    // TO DO: Create Private Attributes of rows and assign rows to 5
-    private static final int rows = 5;
-         
-    // TO DO: Create Private Attributes of seats per rows and assign seats per rows to 10
-    private static final int seatsperrows = 10;
+    // Atribut untuk jumlah baris dan kursi per baris
+    public static final int rows = 5;
+    public static final int seatsperrows = 10;
 
-    // TO DO: Create 2 dimensional array to store seat reservation status
+    // Array dua dimensi untuk menyimpan status reservasi kursi
     int[][] seats = new int[rows][seatsperrows];
-    
-    // TO DO:  Add a constructor to initialize multiple chairs
+
+    // Konstruktor untuk menginisialisasi kursi
     public Bioskop() {
-       seats [0][2]=1;
+        seats[0][2] = 1; // Contoh kursi yang sudah terisi
     }
 
-    //  TO DO: Add a method to display the seat layout
+    // Method untuk menampilkan tata letak kursi
     public void displaySeating() {
-        System.out.println("booking tiket bioskop");
-        for (int b=0; b < rows ; b++) {
-            for (int k=0; k < seatsperrows; b++) {
-                System.out.println(seats[rows][seatsperrows]);
+        System.out.println("Tata letak kursi bioskop:");
+        for (int b = 0; b < rows; b++) {
+            for (int k = 0; k < seatsperrows; k++) {
+                System.out.print(seats[b][k] + " ");
             }
+            System.out.println();
         }
     }
-    
-    //  TO DO: Add a method to reserve seats
+
+    // Method untuk memesan kursi
     public void bookSeat(int row, int seat) {
-    if (seats [row][seat] == 0 ){
-        seats [row][seat] = 1 ;
-        System.out.println("kursi berhasil dipesan" + (row+1)+","+(seat+1));}
-    else {
-        System.out.println("kursi" +(row+1)+","+(seat+1) + "sudah dipilih");
+        if (seats[row][seat] == 0) {
+            seats[row][seat] = 1;
+            System.out.println("Kursi berhasil dipesan: " + (row + 1) + "," + (seat + 1));
+        } else {
+            System.out.println("Kursi " + (row + 1) + "," + (seat + 1) + " sudah dipilih.");
+        }
     }
-    
-}
 }

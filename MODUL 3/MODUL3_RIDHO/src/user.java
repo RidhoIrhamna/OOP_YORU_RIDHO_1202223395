@@ -1,36 +1,30 @@
 public class user {
-   
-   // TO DO: Create Private Attributes of User (nama, noHandphone)
+   // Atribut untuk nama dan nomor telepon
    private String name;
    private String noHandphone;
 
-   // TO DO: Create Constructor of User
-   public void setName(String nama) {
-      this.name = nama;  
-      }
+   // Setter untuk nama dan nomor telepon
+   public void setName(String name) {
+       this.name = name;
+   }
 
-   public void setNoHandPhone(String phoneNumber) {
-      this.noHandphone = phoneNumber;
-      }
+   public void setNoHandPhone(String noHandphone) {
+       this.noHandphone = noHandphone;
+   }
 
-   // TO DO: Create register Method to show information about name and phone number
-   public void register(){
-      System.out.println();
-      }
+   // Method untuk melakukan registrasi dan menampilkan informasi
+   public void register() {
+       System.out.println("Registrasi berhasil!");
+       System.out.println("Nama: " + name);
+       System.out.println("No Handphone: " + noHandphone);
+   }
 
-   // TO DO: Create method to return name and phone number
+   // Getter untuk nama dan nomor telepon
    public String getName() {
-     return name;
-      }
+       return name;
+   }
 
-   public String getnoHandPhone() {
-     return noHandphone;
-      }
+   public String getNoHandPhone() {
+       return noHandphone;
+   }
 }
-
-
-
-
-
-
-  

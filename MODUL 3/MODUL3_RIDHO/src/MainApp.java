@@ -2,30 +2,60 @@ import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
-        // TO DO : Create a Scanner object to receive input from the user
         Scanner scanner = new Scanner(System.in);
-        user scan = new user();
-        System.out.println("====Silahkan register====");
-        scan.register();
+        user user = new user();
+
+        // Meminta pengguna untuk memasukkan nama dan nomor telepon
+        System.out.println("==== Silahkan Register ====");
+        String name;
+        do {
+            System.out.print("Masukkan nama Anda: ");
+            name = scanner.nextLine();
+            if (name.isEmpty()) {
+                System.out.println("Nama tidak boleh kosong.");
+            }
+        } while (name.isEmpty());
         
-       
+        user.setName(name);
 
-
-
-        // TO DO : Create Bioskop and Cashier objects
+        String phoneNumber;
+        do {
+            System.out.print("Masukkan nomor telepon Anda: ");
+            phoneNumber = scanner.nextLine();
+            if (!phoneNumber.matches("\\d+")) {
+                System.out.println("Nomor telepon harus berupa angka.");
+            }
+        } while (!phoneNumber.matches("\\d+"));
         
-        // TO DO : Take the name from the user, make sure it is not empty
+        user.setNoHandPhone(phoneNumber);
+        user.register();
 
-        // TO DO : Take the phone number from the user, make sure it is valid
+        // Membuat objek Bioskop dan Cashier
+        Bioskop bioskop = new Bioskop();
+        Cashier cashier = new Cashier();
 
-        // TO DO : Create a code for ticket order
+        // Menampilkan tata letak kursi dan melakukan pemesanan
+        bioskop.displaySeating();
         
-        // TO DO : Create a exception if user enter not number
+        try {
+            System.out.print("Masukkan nomor baris untuk pemesanan kursi: ");
+            int row = scanner.nextInt() - 1;
+            System.out.print("Masukkan nomor kursi: ");
+            int seat = scanner.nextInt() - 1;
+            
+            if (row < 0 || row >= Bioskop.rows || seat < 0 || seat >= Bioskop.seatsperrows) {
+                throw new ArrayIndexOutOfBoundsException("Nomor kursi di luar jangkauan.");
+            }
 
-        // TO DO : Create a exception if user enter number is out of range
+            bioskop.bookSeat(row, seat);
+            cashier.printTicket(user, row, seat);
 
-        // TO DO : Call the method to reserve seats in the cinema
-
-        // TO DO : Close the Scanner object when the user is finished   
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Input harus berupa angka yang valid.");
+        } finally {
+            scanner.close();
+        }
     }
 }
